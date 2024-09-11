@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-20 text-center">
+    <h1 class="text-4xl font-bold">Yearly Crash Trends</h1>
+    <div class="mt-10">
+        <img src="{{ url_for('static', filename='images/trends_analysis.png') }}" alt="Yearly Crash Trends Graph">
+    </div>
+</section>
+{% endblock %}

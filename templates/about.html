@@ -1,0 +1,34 @@
+<!-- templates/about.html -->
+
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+
+<section class="py-16">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-semibold mb-6 text-center">About Airplane Crash Analytics</h2>
+        <div class="space-y-4">
+            <p>This project aims to analyze airplane crashes and fatalities since 1908, providing valuable insights into aviation safety trends over more than a century.</p>
+            <p>By visualizing crash locations, analyzing aircraft types involved, and identifying temporal and geographical patterns, this project seeks to contribute to a better understanding of factors affecting aviation safety.</p>
+            <h3 class="text-2xl font-bold mt-6">Data Source</h3>
+            <p>The dataset used in this project is sourced from [Your Data Source Here]. It includes detailed records of airplane crashes, including dates, locations, aircraft types, operators, and fatalities.</p>
+            <h3 class="text-2xl font-bold mt-6">Purpose</h3>
+            <p>The primary purpose of this project is to:</p>
+            <ul class="list-disc list-inside">
+                <li>Provide a historical overview of airplane crashes.</li>
+                <li>Identify trends and patterns in aviation safety.</li>
+                <li>Offer interactive visualizations to explore the data.</li>
+                <li>Support aviation safety improvements through data-driven insights.</li>
+            </ul>
+            <h3 class="text-2xl font-bold mt-6">Technologies Used</h3>
+            <ul class="list-disc list-inside">
+                <li>Flask: Web framework for Python.</li>
+                <li>Tailwind CSS: Utility-first CSS framework for styling.</li>
+                <li>Plotly: Interactive graphing library.</li>
+                <li>Pandas: Data manipulation and analysis.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
