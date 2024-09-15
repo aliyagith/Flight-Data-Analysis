@@ -1,10 +1,114 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<section class="py-20 text-center">
-    <h1 class="text-4xl font-bold">Yearly Crash Trends</h1>
-    <div class="mt-10">
-        <img src="{{ url_for('static', filename='images/trends_analysis.png') }}" alt="Yearly Crash Trends Graph">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yearly Trends of Airplane Crashes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #f0f4f8;
+        }
+
+        .header-bg {
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+        }
+
+        .section-title {
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background-color: #3b82f6;
+            top: 100%;
+            left: 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        .footer {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Header -->
+    <header class="header-bg py-12 text-white text-center">
+        <h1 class="text-5xl font-bold">Yearly Trends of Airplane Crashes</h1>
+        <p class="text-xl mt-4">Visualizing airplane crash trends through the years for a better understanding of aviation safety.</p>
+    </header>
+
+    <!-- Main content -->
+    <div class="container mx-auto py-12 px-6 lg:px-12">
+        <!-- Introduction Section -->
+        <section class="mb-16 text-center">
+            <h2 class="text-4xl font-bold text-gray-700 section-title">Exploring Historical Airplane Crash Data</h2>
+            <p class="text-gray-600 text-lg mt-4">
+                The visualizations below highlight the trends in airplane crashes over the years, offering insight into
+                how aviation safety has changed. Explore the data to gain a deeper understanding of the factors behind crash frequency.
+            </p>
+        </section>
+
+        <!-- Yearly Trends Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Yearly Airplane Crash Trends</h3>
+                <p class="text-gray-600 mt-2">
+                    This graph shows the number of airplane crashes recorded each year. Notable spikes and dips over time provide insight into periods of increased or decreased incidents.
+                </p>
+            </div>
+            <div class="card p-8">
+                {{ graph1|safe }} <!-- Plotly Graph for Yearly Trends -->
+            </div>
+        </section>
+
+        <!-- Monthly Trends Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Monthly Airplane Crash Trends</h3>
+                <p class="text-gray-600 mt-2">
+                    This graph visualizes the number of crashes per month. Analyzing this data helps identify which months are more prone to airplane crashes.
+                </p>
+            </div>
+            <div class="card p-8">
+                {{ graph2|safe }} <!-- Plotly Graph for Monthly Trends -->
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Conclusion</h3>
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                From these visualizations, it's evident that airplane crash trends have fluctuated over the years and months. 
+                These insights can serve as a foundation for further investigation into the underlying causes of spikes in crash incidents.
+                By understanding these trends, we can contribute to improving aviation safety in the future.
+            </p>
+        </section>
     </div>
-</section>
-{% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer py-6 text-center">
+        <p class="text-lg">&copy; 2024 Airplane Crash Analysis | Designed with Tailwind CSS</p>
+    </footer>
+</body>
+
+</html>

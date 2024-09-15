@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yearly Trends of Airplane Crashes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #e2e8f0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header-bg {
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            color: white;
+        }
+
+        .section-title {
+            position: relative;
+            color: #3b82f6;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 5px;
+            background-color: #3b82f6;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 8px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e40af;
+        }
+
+        .footer {
+            background-color: #1e3a8a;
+            color: white;
+        }
+
+        .footer a {
+            color: #fca5a5;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #d1d5db;
+            margin: 32px 0;
+        }
+
+        .subsection {
+            padding: 20px 0;
+            border-radius: 12px;
+            background-color: #f9fafb;
+        }
+
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Header -->
+    <header class="header-bg py-16 text-center">
+        <h1 class="text-6xl font-extrabold mb-4">Airplane Crash Trends</h1>
+        <p class="text-2xl font-medium">An in-depth analysis of airplane crashes over time.</p>
+    </header>
+
+    <!-- Main content -->
+    <div class="container mx-auto py-12 px-6 lg:px-12">
+        <!-- Introduction Section -->
+        <section class="mb-16 text-center">
+            <h2 class="text-4xl font-semibold section-title">Discovering Aviation Patterns</h2>
+            <p class="text-gray-600 text-lg mt-4 max-w-2xl mx-auto">
+                Airplane crashes have varied over the years due to changes in technology, safety regulations, and operational conditions. Explore our data analysis to see these trends visualized in meaningful graphs.
+            </p>
+        </section>
+
+        <!-- Yearly Trends Section -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-indigo-600 section-title">Yearly Trends in Airplane Crashes</h3>
+                <p class="text-gray-600 mt-2 max-w-lg mx-auto">
+                    This graph provides insight into yearly airplane crash trends. It allows us to detect periods with higher risk and safety improvements over the decades.
+                </p>
+            </div>
+            <div class="card">
+                {{ graph1|safe }} <!-- Plotly Graph for Yearly Trends -->
+            </div>
+        </section>
+
+        <!-- Monthly Trends Section -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-indigo-600 section-title">Monthly Trends in Crashes</h3>
+                <p class="text-gray-600 mt-2 max-w-lg mx-auto">
+                    This chart displays how crashes are distributed across the months, helping identify if specific times of year witness more incidents.
+                </p>
+            </div>
+            <div class="card">
+                {{ graph2|safe }} <!-- Plotly Graph for Monthly Trends -->
+            </div>
+        </section>
+
+        <!-- Key Insights Section -->
+        <section class="mb-16 subsection">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 section-title">Key Insights</h3>
+                <p class="text-gray-600 mt-2 max-w-2xl mx-auto">
+                    Our analysis shows that while early years saw a steady increase in crashes, improvements in aviation safety over the last few decades have helped stabilize the number of incidents.
+                </p>
+            </div>
+            <ul class="list-disc text-left mx-auto max-w-3xl text-gray-700 text-lg pl-5">
+                <li>Major spikes in crashes are noted during World War II and in the late 20th century.</li>
+                <li>Summers show a slightly higher number of crashes compared to other seasons.</li>
+                <li>Post-2000s, a consistent drop in incidents indicates technological advancements in aviation safety.</li>
+            </ul>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section class="mb-16 text-center">
+            <h3 class="text-3xl font-bold text-indigo-600 section-title">Conclusion</h3>
+            <p class="text-gray-600 text-lg mt-4 max-w-2xl mx-auto">
+                The decline in crashes in recent decades highlights the importance of continued improvements in aviation technology and regulations. However, certain months and regions still show high risks, pointing to the need for further investigation.
+            </p>
+            <div class="mt-8">
+                <a href="/" class="btn-primary">Explore More Data</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Airplane Crash Data Insights | <a href="#">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
