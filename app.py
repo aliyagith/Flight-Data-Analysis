@@ -14,12 +14,68 @@ def create_trends_analysis():
     year_data = df['Year'].value_counts().sort_index()
 
     fig1 = go.Figure()
-    fig1.add_trace(go.Scatter(x=year_data.index, y=year_data.values, mode='lines', name='Crashes'))
-    fig1.update_layout(title='Yearly Trends of Airplane Crashes', xaxis_title='Year', yaxis_title='Number of Crashes')
+    # Add trace with enhanced styling
+    fig1.add_trace(go.Scatter(
+    x=year_data.index, 
+    y=year_data.values, 
+    mode='lines+markers',  # Add markers
+    name='Crashes',
+    line=dict(color='royalblue', width=2),  # Set line color and width
+    marker=dict(size=6, color='red')  # Set marker size and color
+    ))
+
+# Update layout with enhanced styling
+    fig1.update_layout(
+    title={
+        'text': 'Yearly Trends of Airplane Crashes',
+        'y':0.9,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Year',
+    yaxis_title='Number of Crashes',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),  # Add grid lines
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    plot_bgcolor='white'  # Set background color
+    )
 
     # Convert the figure to HTML
     graph1_html = pio.to_html(fig1, full_html=False)
     return graph1_html
+
+def create_fatalities_time_series():
+    # Ensure we are only summing numeric columns
+    df_grouped_year = df.groupby('Year').sum(numeric_only=True)
+
+    fig5 = go.Figure()
+
+# Add the line plot for total fatalities
+    fig5.add_trace(go.Scatter(
+        x=df_grouped_year.index,  # X-axis: Year
+        y=df_grouped_year['Fatalities'],  # Y-axis: Total Fatalities
+        mode='lines+markers',  # Line and markers
+        marker=dict(color='darkred', size=8),  # Marker customization
+        line=dict(color='darkred', width=2),  # Line customization
+        name='Total Fatalities'
+    ))
+
+# Customize the layout
+    fig5.update_layout(
+        title='Total Fatalities in Airplane Crashes Over Time',
+        xaxis_title='Year',
+        yaxis_title='Total Fatalities',
+        template='plotly_white',  # Set a light theme
+        hovermode='x unified',  # Hover effect showing x-axis value across all traces
+        xaxis=dict(showgrid=True),  # Enable x-axis gridlines
+        yaxis=dict(showgrid=True),  # Enable y-axis gridlines
+        height=500,  # Set the figure height
+        width=900  # Set the figure width
+    )
+
+    # Convert the figure to HTML
+    graph5_html = pio.to_html(fig5, full_html=False)
+    return graph5_html
 
 # Function to create the second Plotly graph (Crashes per month)
 def create_monthly_crashes():
@@ -27,8 +83,33 @@ def create_monthly_crashes():
     month_data = df['Month'].value_counts().sort_index()
 
     fig2 = go.Figure()
-    fig2.add_trace(go.Bar(x=month_data.index, y=month_data.values, marker_color='yellow', name='Crashes by Month'))
-    fig2.update_layout(title='Number of Airplane Crashes per Month', xaxis_title='Month', yaxis_title='Number of Crashes')
+    # Add trace with enhanced styling and color gradient
+    fig2.add_trace(go.Bar(
+    x=month_data.index, 
+    y=month_data.values, 
+    marker=dict(
+        color=month_data.values,
+        colorscale='Viridis',  # Set color gradient
+        showscale=True  # Show color scale
+    ),
+    name='Crashes by Month'
+    ))
+
+# Update layout with enhanced styling
+    fig2.update_layout(
+    title={
+        'text': 'Number of Airplane Crashes per Month',
+        'y':0.9,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Month',
+    yaxis_title='Number of Crashes',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),  # Add grid lines
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    plot_bgcolor='white'  # Set background color
+    )
 
     # Convert the figure to HTML
     graph2_html = pio.to_html(fig2, full_html=False)
@@ -58,6 +139,8 @@ def create_causes_analysis():
     graph4_html = pio.to_html(fig4, full_html=False)
     return graph4_html
 
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -70,10 +153,11 @@ def about():
 def trends_analysis():
     # Generate the graphs for the trends analysis page
     graph1 = create_trends_analysis()
+    graph5 = create_fatalities_time_series()
     graph2 = create_monthly_crashes()
 
     # Pass the generated graphs to the HTML template
-    return render_template('trends_analysis.html', graph1=graph1, graph2=graph2)
+    return render_template('trends_analysis.html', graph1=graph1, graph2=graph2, graph5=graph5)
 
 @app.route('/operators-analysis')
 def operators_analysis():
