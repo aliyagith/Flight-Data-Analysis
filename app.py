@@ -139,7 +139,222 @@ def create_causes_analysis():
     graph4_html = pio.to_html(fig4, full_html=False)
     return graph4_html
 
+# Function to Visualization a Relationship between number of people aboard and fatalities
+def create_trends_analysis():
+# Assuming df is your DataFrame
+    fig = px.scatter(
+    df,
+    x='Aboard',
+    y='Fatalities',
+    opacity=0.6,
+    title='Number of Fatalities vs. Number of People Aboard'
+)
 
+# Update layout to customize the appearance
+    fig.update_layout(
+    title={
+        'text': 'Number of Fatalities vs. Number of People Aboard',
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Number of People Aboard',
+    yaxis_title='Number of Fatalities',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    plot_bgcolor='white'  # Set background color
+)
+# Function to Distribution of the number of fatalities
+def create_trends_analysis():
+    fig = px.histogram(
+        df,
+        x='Fatalities',
+        nbins=50,
+        title='Distribution of Fatalities in Airplane Crashes',
+        opacity=0.6,
+        color_discrete_sequence=['red'],
+        marginal='kde'  # Add KDE curve
+)
+
+# Update layout to customize the appearance
+    fig.update_layout(
+        title={
+        'text': 'Distribution of Fatalities in Airplane Crashes',
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Number of Fatalities',
+    yaxis_title='Frequency',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    plot_bgcolor='white'  # Set background color
+)
+# Function of total fatalities over time
+def create_trends_analysis():
+df_grouped_year = df.groupby('Year').sum(numeric_only=True)
+# Create the Plotly line plot
+fig = go.Figure()
+# Add a line for fatalities over time
+fig.add_trace(go.Scatter(
+    x=df_grouped_year.index,
+    y=df_grouped_year['Fatalities'],
+    mode='lines+markers',
+    marker=dict(color='darkred'),
+    line=dict(color='darkred'),
+    name='Fatalities'
+))
+# Customize the layout of the Plotly figure
+fig.update_layout(
+    title={
+        'text': 'Total Fatalities in Airplane Crashes Over Time',
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Year',
+    yaxis_title='Total Fatalities',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    plot_bgcolor='white',
+    height=600,  # You can adjust figure size
+    width=1000
+)
+# Function of Top 10 types of aircraft involved in crashes
+def create_causes_analysis():
+top_types = df['Type'].value_counts().nlargest(10)
+
+# Create the bar plot using Plotly
+fig = go.Figure()
+
+# Add bars to the figure
+fig.add_trace(go.Bar(
+    x=top_types.values,
+    y=top_types.index,
+    orientation='h',  # Horizontal bar plot
+    marker=dict(color=top_types.values, colorscale='coolwarm'),  # Color palette
+    name='Aircraft Types'
+))
+
+# Customize the layout
+fig.update_layout(
+    title={
+        'text': 'Top 10 Types of Aircraft Involved in Crashes',
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Number of Crashes',
+    yaxis_title='Type of Aircraft',
+    plot_bgcolor='white',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    height=600,
+    width=1000
+)
+# Function of Top 10 locations with the most crashes
+def create_causes_analysis():
+    # Get the top 10 locations with the most crashes
+top_locations = df['Location'].value_counts().nlargest(10)
+
+# Create the bar plot using Plotly
+fig = go.Figure()
+
+# Add bars to the figure
+fig.add_trace(go.Bar(
+    x=top_locations.values,
+    y=top_locations.index,
+    orientation='h',  # Horizontal bar plot
+    marker=dict(color=top_locations.values, colorscale='copper'),  # Apply the copper color palette
+    name='Locations'
+))
+
+# Customize the layout
+fig.update_layout(
+    title={
+        'text': 'Top 10 Locations with the Most Crashes',
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Number of Crashes',
+    yaxis_title='Location',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    plot_bgcolor='white',
+    height=600,
+    width=1000
+)
+# Function of top 10 routes with the most crashes
+def create_causes_analysis():
+# Get the top 10 routes with the most crashes
+top_routes = df['Route'].value_counts().nlargest(10)
+
+# Create the bar plot using Plotly
+fig = go.Figure()
+
+# Add bars to the figure
+fig.add_trace(go.Bar(
+    x=top_routes.values,
+    y=top_routes.index,
+    orientation='h',  # Horizontal bar plot
+    marker=dict(color=top_routes.values, colorscale='rocket'),  # Apply 'rocket' color palette
+    name='Routes'
+))
+
+# Customize the layout
+fig.update_layout(
+    title={
+        'text': 'Top 10 Routes with the Most Crashes',
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Number of Crashes',
+    yaxis_title='Route',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    plot_bgcolor='white',
+    height=600,
+    width=1000
+)
+# Function of distribution of crashes with ground fatalities
+def create_causes_analysis():
+# Filter the dataframe for crashes involving ground fatalities
+ground_fatalities = df[df['Ground'] > 0]
+
+# Create the histogram with KDE using Plotly
+fig = ff.create_distplot(
+    [ground_fatalities['Ground']],  # Data for ground fatalities
+    group_labels=['Ground Fatalities'],  # Label for the data
+    bin_size=5,  # You can adjust the bin size to match the seaborn histogram
+    colors=['purple']  # Set color to purple
+)
+
+# Customize the layout for titles and labels
+fig.update_layout(
+    title={
+        'text': 'Distribution of Crashes Involving Ground Fatalities',
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    },
+    xaxis_title='Number of Ground Fatalities',
+    yaxis_title='Frequency',
+    plot_bgcolor='white',
+    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    height=600,
+    width=1000
+)
 
 @app.route('/')
 def index():
