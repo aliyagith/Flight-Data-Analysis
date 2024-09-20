@@ -193,37 +193,29 @@ def create_trends_analysis():
     plot_bgcolor='white'  # Set background color
 )
 # Function of total fatalities over time
-def create_trends_analysis():
-df_grouped_year = df.groupby('Year').sum(numeric_only=True)
-# Create the Plotly line plot
 fig = go.Figure()
-# Add a line for fatalities over time
+
+# Add a line plot
 fig.add_trace(go.Scatter(
-    x=df_grouped_year.index,
-    y=df_grouped_year['Fatalities'],
+    x=df_grouped_year.index, 
+    y=df_grouped_year['Fatalities'], 
     mode='lines+markers',
-    marker=dict(color='darkred'),
+    marker=dict(color='darkred'), 
     line=dict(color='darkred'),
     name='Fatalities'
 ))
-# Customize the layout of the Plotly figure
+
+# Add title and labels
 fig.update_layout(
-    title={
-        'text': 'Total Fatalities in Airplane Crashes Over Time',
-        'y': 0.9,
-        'x': 0.5,
-        'xanchor': 'center',
-        'yanchor': 'top'
-    },
+    title='Total Fatalities in Airplane Crashes Over Time',
     xaxis_title='Year',
     yaxis_title='Total Fatalities',
-    xaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
-    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
-    yaxis=dict(showgrid=True, gridwidth=1, gridcolor='LightGray'),
+    xaxis=dict(showgrid=True),
+    yaxis=dict(showgrid=True),
     plot_bgcolor='white',
-    height=600,  # You can adjust figure size
-    width=1000
+    width=800, height=400
 )
+
 # Function of Top 10 types of aircraft involved in crashes
 def create_causes_analysis():
 top_types = df['Type'].value_counts().nlargest(10)
@@ -370,9 +362,17 @@ def trends_analysis():
     graph1 = create_trends_analysis()
     graph5 = create_fatalities_time_series()
     graph2 = create_monthly_crashes()
+    graph3 = create_operator_analysis()
+    graph6 = create_trends_analysis()
+    graph7 = create_trends_analysis()
+    graph8 = create_causes_analysis()
+    graph9 = create_causes_analysis()
+    graph4 = create_operator_analysis()
+    graph10 = create_causes_analysis()
+
 
     # Pass the generated graphs to the HTML template
-    return render_template('trends_analysis.html', graph1=graph1, graph2=graph2, graph5=graph5)
+    return render_template('trends_analysis.html', graph1=graph1, graph2=graph2, graph5=graph5, graph3=graph3, graph6=graph6, graph7=graph7, graph8=graph8, graph9=graph9, graph4=graph4, graph10=graph10)
 
 @app.route('/operators-analysis')
 def operators_analysis():
