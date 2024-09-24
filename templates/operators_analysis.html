@@ -1,17 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 10 Operators with Most Crashes</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+         .shadow-text {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .waves {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            min-height: 100px;
+            max-height: 150px;
+        }
+
+        .parallax>use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+        }
+
+        .parallax>use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+
+        .parallax>use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+
+        .parallax>use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+
+        .parallax>use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(85px, 0, 0);
+            }
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #4F46E5;
+            margin: 15px auto 0;
+        }
+        .card {
+            background-color: #f0f4f8;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card-icon {
+            background-color: #4F46E5;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+        }
+        .plane-illustration {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M507.31 72.57L439.43 4.69c-6.25-6.25-16.38-6.25-22.63 0l-22.63 22.63c-6.25 6.25-6.25 16.38 0 22.63l67.88 67.88c6.25 6.25 16.38 6.25 22.63 0l22.63-22.63c6.25-6.25 6.25-16.38 0-22.63zM179.94 180.69L25.93 256l154.01 75.31c7.68 3.76 16.2 3.76 23.88 0L358.82 256 203.82 180.69c-7.68-3.76-16.2-3.76-23.88 0z' fill='%23bac8d3'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: 60px;
+            background-position: center;
+        }
+    </style>
 </head>
-<body>
-    <div class="container mx-auto p-8">
-        <h1 class="text-3xl font-bold mb-4">Top 10 Operators with Most Crashes</h1>
-        <div>
-            {{ graph3|safe }}  <!-- Plotly graph will be embedded here -->
+
+<body class="antialiased bg-gray-100">
+    <!-- Hero Section -->
+    <section class="relative h-min-screen overflow-hidden py-20 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+        <div class="absolute inset-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
         </div>
-    </div>
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-6xl font-extrabold text-white mb-6 shadow-text">Aviation Safety Trends</h1>
+            <p class="text-xl text-white max-w-2xl mx-auto mb-20 leading-relaxed shadow-text">
+                Unveiling Insights Through Data Visualization
+            </p>
+            
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <main class="container mx-auto py-16 px-6 lg:px-12" id="explore">
+        <!-- Crash Frequency by Operator Section -->
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Crash Frequency by Operator</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    This graph shows the number of crashes for the top 10 operators, providing insights into which companies have the highest incident rates.
+                </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 card">
+                {{ graph3|safe }}
+            </div>
+            <div class="mt-8 text-gray-700 bg-gray-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-xl mb-3">Key Observations:</h4>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>The top 3 operators account for a significant portion of the total crashes, highlighting the need for targeted safety improvements.</li>
+                    <li>Smaller operators with fewer crashes may indicate better safety practices or stricter regulations.</li>
+                    <li>Comparing crash frequency across operators can help identify industry leaders and laggards in aviation safety.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Operator Crash Fatalities Section -->
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Operator Crash Fatalities</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    This graph compares the number of fatalities associated with crashes for the top 10 operators, providing insights into the severity of incidents.
+                </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 card">
+                {{ graph7|safe }}
+            </div>
+            <div class="mt-8 text-gray-700 bg-gray-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-xl mb-3">Insights:</h4>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>The top 3 operators with the highest crash frequency also have the most fatalities, indicating a correlation between incident rate and severity.</li>
+                    <li>Operators with lower fatality rates may have better safety protocols, aircraft design, or emergency response procedures.</li>
+                    <li>Further investigation is needed to determine the factors contributing to high fatality rates for certain operators.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Charting the Course for Safer Skies</h3>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 text-gray-700">
+                <p class="text-lg leading-relaxed mb-4">
+                    The data presented in these visualizations offers a comprehensive view of the top operators with the highest crash rates and fatalities. This information can serve as a starting point for the aviation industry to:
+                </p>
+                <ul class="list-disc pl-6 space-y-2 mb-4">
+                    <li>Identify the operators that require more stringent safety measures and oversight.</li>
+                    <li>Investigate the root causes of high crash and fatality rates for specific companies.</li>
+                    <li>Implement best practices from operators with lower incident and fatality numbers.</li>
+                </ul>
+                <p class="text-lg leading-relaxed">
+                    By taking proactive steps to address these insights, the aviation industry can continue to enhance safety protocols and make air travel even safer for passengers and crew. Collaborative efforts between regulators, manufacturers, and operators will be crucial in charting the course for safer skies.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-indigo-600 text-white py-8 text-center">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-center">
+                <div class="mr-4 plane-illustration"></div>
+                <div>
+                    <p class="text-lg mb-2">&copy; 2024 Airplane Crash Analysis</p>
+                    <p>Designed with Tailwind CSS | Data Visualization powered by Plotly</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

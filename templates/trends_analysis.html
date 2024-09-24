@@ -4,113 +4,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yearly Trends of Airplane Crashes</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css">
+    <title>Aviation Safety Trends | Airplane Crash Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
-        body {
-            background-color: #f0f4f8;
+        .shadow-text {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .header-bg {
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
-        }
-
-        .section-title {
-            position: relative;
-        }
-
-        .section-title::before {
-            content: '';
+        .waves {
             position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            min-height: 100px;
+            max-height: 150px;
+        }
+
+        .parallax>use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+        }
+
+        .parallax>use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+
+        .parallax>use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+
+        .parallax>use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+
+        .parallax>use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(85px, 0, 0);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
             width: 50px;
             height: 4px;
-            background-color: #3b82f6;
-            top: 100%;
-            left: 0;
+            background-color: #4F46E5;
+            margin: 15px auto 0;
         }
 
         .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
-            transform: scale(1.02);
-            transition: transform 0.3s ease;
-        }
-
-        .footer {
-            background-color: #3b82f6;
-            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 
-<body class="antialiased">
-    <!-- Header -->
-    <header class="header-bg py-12 text-white text-center">
-        <h1 class="text-5xl font-bold">Yearly Trends of Airplane Crashes</h1>
-        <p class="text-xl mt-4">Visualizing airplane crash trends through the years for a better understanding of aviation safety.</p>
-    </header>
+<body class="antialiased bg-gray-100">
+    <!-- Animated Hero Section -->
+    <section class="relative h-min-screen overflow-hidden py-20 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+        <div class="absolute inset-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-6xl font-extrabold text-white mb-6 shadow-text">Aviation Safety Trends</h1>
+            <p class="text-xl text-white max-w-2xl mx-auto mb-20 leading-relaxed shadow-text">
+                Unveiling Insights Through Data Visualization
+            </p>
+            
+        </div>
+    </section>
 
     <!-- Main content -->
-    <div class="container mx-auto py-12 px-6 lg:px-12">
+    <main class="container mx-auto py-16 px-6 lg:px-12" id="explore">
         <!-- Introduction Section -->
-        <section class="mb-16 text-center">
-            <h2 class="text-4xl font-bold text-gray-700 section-title">Exploring Historical Airplane Crash Data</h2>
-            <p class="text-gray-600 text-lg mt-4">
-                The visualizations below highlight the trends in airplane crashes over the years, offering insight into
-                how aviation safety has changed. Explore the data to gain a deeper understanding of the factors behind crash frequency.
+        <section class="mb-20 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 section-title mb-6">Decoding Aviation Safety</h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                Dive into our comprehensive analysis of historical airplane crash data. Through advanced visualizations,
+                we uncover patterns and trends that shed light on the evolution of aviation safety over the years.
             </p>
         </section>
 
         <!-- Yearly Trends Section -->
-        <section class="mb-16">
-            <div class="text-center mb-8">
+        <section class="mb-20">
+            <div class="text-center mb-10">
                 <h3 class="text-3xl font-semibold text-indigo-600 section-title">Yearly Airplane Crash Trends</h3>
-                <p class="text-gray-600 mt-2">
-                    This graph shows the number of airplane crashes recorded each year. Notable spikes and dips over time provide insight into periods of increased or decreased incidents.
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Observe the fluctuations in airplane crashes across decades, revealing the industry's safety
+                    trajectory.
                 </p>
             </div>
-            <div class="card p-8">
-                {{ graph1|safe }} <!-- Plotly Graph for Yearly Trends -->
+            <div class="bg-white rounded-lg shadow-lg p-8 card">
+                {{ graph1|safe }}
+            </div>
+            <div class="mt-8 text-gray-700 bg-gray-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-xl mb-3">Key Observations:</h4>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Peak in crashes during the mid-20th century, likely due to rapid aviation growth and
+                        technological limitations.</li>
+                    <li>Significant decline in crash frequency from the 1970s onwards, indicating improved safety
+                        measures and technological advancements.</li>
+                    <li>Recent years show the lowest crash rates, highlighting the current state of aviation safety.
+                    </li>
+                </ul>
             </div>
         </section>
-
 
         <!-- Monthly Trends Section -->
-        <section class="mb-16">
-            <div class="text-center mb-8">
-                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Monthly Airplane Crash Trends</h3>
-                <p class="text-gray-600 mt-2">
-                    This graph visualizes the number of crashes per month. Analyzing this data helps identify which months are more prone to airplane crashes.
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Monthly Crash Patterns</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Explore the distribution of crashes across different months, uncovering potential seasonal
+                    influences on aviation incidents.
                 </p>
             </div>
-            <div class="card p-8">
-                {{ graph2|safe }} <!-- Plotly Graph for Monthly Trends -->
+            <div class="bg-white rounded-lg shadow-lg p-8 card">
+                {{ graph2|safe }}
+            </div>
+            <div class="mt-8 text-gray-700 bg-gray-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-xl mb-3">Insights:</h4>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Higher crash rates observed during winter months, possibly due to challenging weather
+                        conditions.</li>
+                    <li>Summer months show relatively lower incident rates, suggesting favorable flying conditions.</li>
+                    <li>Variations in monthly trends emphasize the importance of season-specific safety protocols.</li>
+                </ul>
             </div>
         </section>
 
-        
+        <!-- Series Trends Section -->
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Crash Series Analysis</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Examine patterns in crash occurrences to identify potential underlying factors or anomalies.
+                </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 card">
+                {{ graph5|safe }}
+            </div>
+            <div class="mt-8 text-gray-700 bg-gray-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-xl mb-3">Notable Findings:</h4>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Distinct clusters or series of crashes may indicate systemic issues during specific periods.
+                    </li>
+                    <li>Gaps between crash series could represent improvements in safety measures or technology.</li>
+                    <li>Analysis of crash series helps in identifying periods requiring deeper investigation for safety
+                        enhancements.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Fatalities vs Aboard Section -->
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Fatalities vs Passengers Aboard</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Compare the number of fatalities to the total passengers aboard, providing insights into crash
+                    severity and survival rates.
+                </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 card">
+                {{ graph6|safe }}
+            </div>
+            <div class="mt-8 text-gray-700 bg-gray-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-xl mb-3">Critical Observations:</h4>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Correlation between passenger count and fatalities indicates the impact of crash severity.</li>
+                    <li>Incidents with high survival rates may highlight effective emergency procedures or aircraft
+                        safety features.</li>
+                    <li>Analysis of outliers can provide valuable insights into exceptionally severe incidents or
+                        miraculous survivals.</li>
+                </ul>
+            </div>
+        </section>
 
         <!-- Conclusion Section -->
-        <section class="mb-16">
-            <div class="text-center mb-8">
-                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Conclusion</h3>
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-semibold text-indigo-600 section-title">Charting the Course for Safer Skies
+                </h3>
             </div>
-            <p class="text-gray-700 text-lg leading-relaxed">
-                From these visualizations, it's evident that airplane crash trends have fluctuated over the years and months. 
-                These insights can serve as a foundation for further investigation into the underlying causes of spikes in crash incidents.
-                By understanding these trends, we can contribute to improving aviation safety in the future.
-            </p>
+            <div class="bg-white rounded-lg shadow-lg p-8 text-gray-700">
+                <p class="text-lg leading-relaxed mb-4">
+                    Our comprehensive analysis of airplane crash data reveals a compelling narrative of progress in
+                    aviation safety:
+                </p>
+                <ul class="list-disc pl-6 space-y-2 mb-4">
+                    <li>Long-term decline in crash frequency, showcasing the industry's commitment to safety
+                        improvements.</li>
+                    <li>Seasonal variations in crash rates, emphasizing the need for adaptive safety measures.</li>
+                    <li>Insights from fatality analyses guiding the development of more effective survival strategies.
+                    </li>
+                </ul>
+                <p class="text-lg leading-relaxed">
+                    While these trends paint a picture of increasing safety, they also highlight areas for continued
+                    vigilance and improvement. By leveraging these insights, the aviation industry can further enhance
+                    safety protocols, potentially saving more lives and making air travel even safer for future
+                    generations.
+                </p>
+            </div>
         </section>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer py-6 text-center">
-        <p class="text-lg">&copy; 2024 Airplane Crash Analysis | Designed with Tailwind CSS</p>
+    <footer class="bg-indigo-600 text-white py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">&copy; 2024 Airplane Crash Analysis</p>
+            <p>Designed with Tailwind CSS | Data Visualization powered by Plotly</p>
+        </div>
     </footer>
 </body>
 
