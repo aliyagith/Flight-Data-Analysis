@@ -118,7 +118,7 @@ def create_fatalities_time_series():
     return graph5_html
 
 def fatalities_vs_aboard():
-     # Create the scatter plot with enhanced styling using Plotly
+    # Create the scatter plot with enhanced styling using Plotly
     fig6= go.Figure()
     fig6 = px.scatter(
             df, 
@@ -147,7 +147,7 @@ def fatalities_vs_aboard():
         plot_bgcolor='white'  # Set background color
     )
 
-     # Convert the figure to HTML
+    # Convert the figure to HTML
     graph6_html = pio.to_html(fig6, full_html=False)
     return graph6_html
 
