@@ -4,9 +4,10 @@
 {% block title %}About{% endblock %}
 {% block content %}
 
-<section class="py-16">
-    <div class="container mx-auto">
-        <h2 class="text-3xl font-semibold mb-6 text-center">About Airplane Crash Analytics</h2>
+<section class="py-10" style="background-image:url('https://static.vecteezy.com/system/resources/previews/033/862/863/non_2x/airplane-in-the-fire-3d-illustration-elements-of-this-image-furnished-by-nasa-the-plane-crashed-to-the-ground-ai-generated-free-photo.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+    <div class="container mx-auto text-white ">
+        <h2 class="text-7xl font-semibold mb-6 text-center">About Airplane Crash Analytics</h2>
         <div class="space-y-4">
             <p>This project aims to analyze airplane crashes and fatalities since 1908, providing valuable insights into aviation safety trends over more than a century.</p>
             <p>By visualizing crash locations, analyzing aircraft types involved, and identifying temporal and geographical patterns, this project seeks to contribute to a better understanding of factors affecting aviation safety.</p>
@@ -30,5 +31,45 @@
         </div>
     </div>
 </section>
+
+<section>
+
+    <section
+                class="bg-gradient-to-r from-yellow-600 to-orange-500 text-white-100 rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
+                <h2 class="text-3xl font-semibold mb-8 text-center">Project Details </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center bg-white bg-opacity-20 rounded-lg p-6">
+                        <div class="md:w-full mt-8 md:mt-1">
+                            <img src="https://media.licdn.com/dms/image/v2/D5612AQFC2a0j--y1yQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1709797358328?e=1734566400&v=beta&t=WyML14aBpG8OrBsb10KF2Y6wdI3jDlbLT6R5qUSNamY"
+                                alt="Data analysis visualization" class="rounded-lg shadow-md">
+                        </div>
+                        <p class="text-4xl font-bold mb-2"> Methodology</p>
+                        <p class="text-xl">This project utilizes data analysis techniques to explore historical airplane crash data from 1908 to the present. The data is sourced from Kaggle and analyzed using Python libraries such as pandas for data manipulation, and Flask, Plotly.. The analysis involves cleaning the data, identifying trends in crash occurrences, examining causes, survival rates, and geographical patterns. Statistical analysis is applied to uncover insights, and the results are presented visually to offer actionable recommendations for improving aviation safety.</p>
+                    </div>
+                    <div class="text-center bg-white bg-opacity-20 rounded-lg p-6">
+                        <div class="md:w-full mt-4 md:mt-0">
+                            <img src="https://plus.unsplash.com/premium_photo-1661964062531-dcbd3b63d1bd?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YXZpYXRpb258ZW58MHx8MHx8fDA%3D"
+                                alt="Data analysis visualization" class="rounded-lg shadow-md">
+                        </div>
+                        <p class="text-4xl font-bold mb-2">Algorithms</p>
+                        <p class="text-xl">Descriptive Statistics: Basic statistical techniques, such as mean, median, and standard deviation, are applied to understand crash trends, survival rates, and fatalities.
+                        </p>
+                        <p class="text-xl">Data Filtering and Grouping: Using algorithms to group crashes by variables such as year, region, or airline, helping identify patterns.</p>
+                        <p class="text-xl">Time Series Analysis: Algorithms are used to analyze trends over time, identifying any changes in crash frequencies across decades.
+                        </p>
+                    </div>
+                    <div class="text-center bg-white bg-opacity-20 rounded-lg p-6">
+                        <div class="md:w-full mt-4 md:mt-0">
+                            <img src="https://img.freepik.com/free-photo/jumbo-jet-flying-sky_23-2150895689.jpg"
+                                alt="Data analysis visualization" class="rounded-lg shadow-md">
+                        </div>
+                        <p class="text-4xl font-bold mb-2">Conclusion</p>
+                        <p class="text-xl">This project provides a comprehensive analysis of airplane crash data from 1908 to the present, revealing key trends, causes, and factors affecting crash occurrences and survival rates. Through data exploration, we identified notable improvements in aviation safety due to advancements in technology and regulations, while highlighting regions and airlines with higher crash rates. The findings offer valuable insights for airlines, regulators, and safety organizations, helping to shape future safety measures and reduce the risk of crashes.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+</section>
+
 
 {% endblock %}

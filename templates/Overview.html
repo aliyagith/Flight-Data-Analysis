@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview of the Dataset</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine-ie11.min.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-green-50 to-blue-50 font-sans">
+    <nav class="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 shadow-lg">
+    </nav>
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12 relative">
+            <img src="https://connectedaviationtoday.com/wp-content/uploads/2019/08/shutterstock_1319730824.jpg"
+                alt="Blinkit delivery" class="w-full h-48 object-cover rounded-lg shadow-lg mb-4">
+            <div class="absolute inset-0 bg-black opacity-50 rounded-lg"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <h1 class="text-5xl font-bold text-white mb-2 shadow-text">Dataset Overview</h1>
+                <p class="text-xl text-white shadow-text">Uncovering Patterns in Aviation Incidents to Enhance Future Safety
+                </p>
+            </div>
+        </header>
+
+        <main class="space-y-12">
+            <section class="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 pr-8">
+                        <h2 class="text-3xl font-semibold text-black mb-4">Project Overview</h2>
+                        <p class="text-black leading-relaxed">
+                            This dataset provides detailed information about airplane crashes from 1908 to the present. 
+                            It includes key variables such as crash date, location, cause, fatalities, and more. This analysis aims to uncover important trends and insights to improve aviation safety.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 mt-4 md:mt-0">
+                        <img src="https://img.freepik.com/premium-photo/plane-ignition-catastrophic-event-runway-as-flames-engulf-aircraft-urgency-emergency-response-dangers-faced-aviation-mishaps-with-smoke-fire-erupting_887181-27740.jpg"
+                            alt="Data analysis visualization" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+            </section>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <section class="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
+                    
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Features</h2>
+                    <div class="md:w-full mt-8 md:mt-1">
+                        <img src="https://img.freepik.com/free-vector/aircraft-airplanes-maintenance-service-repair-isometric-infographics-with-human-characters-workers-engine-parts-text-vector-illustration_1284-81537.jpg"
+                            alt="Data analysis visualization" class="rounded-lg shadow-md">
+                    </div>
+                    <br>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Date: The date when the crash occurred.
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Time:The time of the crash.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Location:The geographical location of the incident.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Source: Kaggle Airplane Crash Dataset
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Operator:The operator or airline of the aircraft
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Aboard:The total number of people aboard the aircraft.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Fatalities:The number of fatalities in the crash.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Ground:The number of ground casualties.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Type:The type of aircraft involved.
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
+                    
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Project Goals:
+                    </h2>
+                    <div class="md:max-w-7xl mt-4 md:mt-0">
+                        <img src="https://img.freepik.com/free-photo/jumbo-jet-flying-sky_23-2150895701.jpg?ga=GA1.1.693818590.1726290868&semt=ais_hybrid"
+                            alt="Data analysis visualization" class="rounded-lg shadow-md">
+                    </div>
+                    <br>
+                    <ol class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Identify Risk Patterns:Find common threads in past accidents to spot risks before they become problems.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Make Safety Recommendations:Turn our findings into clear safety steps that airlines and crews can actually use.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Analyze Weather Impact:Understand how different weather conditions affect flight safety across regions.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Study Human Factors:Look at how pilot experience, crew coordination, and decision-making influence incidents.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-green-500 rounded-full p-1 mr-3">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            Create Safety Scores:Develop a simple rating system to measure airline safety performance.
+                        </li>
+                    </ol>
+                </section>
+            </div>
+        </main>
+
+        <footer class="mt-12 text-center text-Black-600">
+            <p>&copy; © 2024 Airplane Crash overview.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
