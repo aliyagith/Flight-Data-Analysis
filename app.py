@@ -239,6 +239,11 @@ def create_causes_analysis():
 def index():
     return render_template('index.html')
 
+    
+@app.route('/overview')
+def overview():
+    return render_template('overview.html')
+
 @app.route('/about')
 def about():
     return render_template('about.html')

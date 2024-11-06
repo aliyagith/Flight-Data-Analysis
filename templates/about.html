@@ -4,30 +4,32 @@
 {% block title %}About{% endblock %}
 {% block content %}
 
-<section class="py-10" style="background-image:url('https://static.vecteezy.com/system/resources/previews/033/862/863/non_2x/airplane-in-the-fire-3d-illustration-elements-of-this-image-furnished-by-nasa-the-plane-crashed-to-the-ground-ai-generated-free-photo.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-    <div class="container mx-auto text-white ">
-        <h2 class="text-7xl font-semibold mb-6 text-center">About Airplane Crash Analytics</h2>
-        <div class="space-y-4">
-            <p>This project aims to analyze airplane crashes and fatalities since 1908, providing valuable insights into aviation safety trends over more than a century.</p>
-            <p>By visualizing crash locations, analyzing aircraft types involved, and identifying temporal and geographical patterns, this project seeks to contribute to a better understanding of factors affecting aviation safety.</p>
-            <h3 class="text-2xl font-bold mt-6">Data Source</h3>
-            <p>The dataset used in this project is sourced from [Your Data Source Here]. It includes detailed records of airplane crashes, including dates, locations, aircraft types, operators, and fatalities.</p>
-            <h3 class="text-2xl font-bold mt-6">Purpose</h3>
-            <p>The primary purpose of this project is to:</p>
-            <ul class="list-disc list-inside">
-                <li>Provide a historical overview of airplane crashes.</li>
-                <li>Identify trends and patterns in aviation safety.</li>
-                <li>Offer interactive visualizations to explore the data.</li>
-                <li>Support aviation safety improvements through data-driven insights.</li>
-            </ul>
-            <h3 class="text-2xl font-bold mt-6">Technologies Used</h3>
-            <ul class="list-disc list-inside">
-                <li>Flask: Web framework for Python.</li>
-                <li>Tailwind CSS: Utility-first CSS framework for styling.</li>
-                <li>Plotly: Interactive graphing library.</li>
-                <li>Pandas: Data manipulation and analysis.</li>
-            </ul>
+<section class="py-10 relative">
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat filter blur-lg" style="background-image:url('https://static.vecteezy.com/system/resources/previews/033/862/863/non_2x/airplane-in-the-fire-3d-illustration-elements-of-this-image-furnished-by-nasa-the-plane-crashed-to-the-ground-ai-generated-free-photo.jpg');"></div>
+    <div class="container mx-auto px-4 flex justify-between items-center relative z-10">
+        <div class="container mx-auto text-white">
+            <h2 class="text-7xl font-semibold mb-6 text-center">About Airplane Crash Analytics</h2>
+            <div class="space-y-4">
+                <p>This project aims to analyze airplane crashes and fatalities since 1908, providing valuable insights into aviation safety trends over more than a century.</p>
+                <p>By visualizing crash locations, analyzing aircraft types involved, and identifying temporal and geographical patterns, this project seeks to contribute to a better understanding of factors affecting aviation safety.</p>
+                <h3 class="text-2xl font-bold mt-6">Data Source</h3>
+                <p>The dataset used in this project is sourced from [Your Data Source Here]. It includes detailed records of airplane crashes, including dates, locations, aircraft types, operators, and fatalities.</p>
+                <h3 class="text-2xl font-bold mt-6">Purpose</h3>
+                <p>The primary purpose of this project is to:</p>
+                <ul class="list-disc list-inside">
+                    <li>Provide a historical overview of airplane crashes.</li>
+                    <li>Identify trends and patterns in aviation safety.</li>
+                    <li>Offer interactive visualizations to explore the data.</li>
+                    <li>Support aviation safety improvements through data-driven insights.</li>
+                </ul>
+                <h3 class="text-2xl font-bold mt-6">Technologies Used</h3>
+                <ul class="list-disc list-inside">
+                    <li>Flask: Web framework for Python.</li>
+                    <li>Tailwind CSS: Utility-first CSS framework for styling.</li>
+                    <li>Plotly: Interactive graphing library.</li>
+                    <li>Pandas: Data manipulation and analysis.</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
